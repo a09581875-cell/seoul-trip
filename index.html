@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="zh-TW" style="color-scheme:light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>首爾五日四夜 · 行程手冊</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── 強制亮色模式，不跟隨系統深色 ── */
+:root {
+  color-scheme: light only;
+  supported-color-schemes: light;
+
+  --bg:       #F7F5F2;
+  --surface:  #FFFFFF;
+  --surface2: #F0EDE8;
+
+  --ink:      #1A1410;
+  --ink2:     #4A3F35;
+  --ink3:     #7A6E65;
+
+  --navy:     #1F3A5F;
+  --navy-mid: #2D5282;
+  --navy-bg:  #E8EFF8;
+
+  --gold:     #B07D2A;
+  --gold-bg:  #FEF6E4;
+  --gold-bdr: #E5C76B;
+
+  --red:      #B83028;
+  --red-bg:   #FEF0EF;
+  --red-bdr:  #F5A9A4;
+
+  --green:    #1A6640;
+  --green-bg: #EAF7EF;
+
+  --bdr:      #D8D2CA;
+  --bdr-strong: #B8B0A6;
+
+  --line1: #0052A4;
+  --line2: #00A84D;
+  --line3: #EF7C1C;
+  --line4: #00A5DE;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+html, body {
+  background-color: var(--bg) !important;
+  color: var(--ink) !important;
+  font-family: 'Noto Sans TC', -apple-system, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ════ HERO ════ */
+.hero {
+  background: var(--navy);
+  color: #fff;
+  padding: 56px 22px 32px;
+  padding-top: calc(56px + env(safe-area-inset-top));
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '서울';
+  position: absolute;
+  right: -10px; bottom: -20px;
+  font-size: 130px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #FFD97A;
+  margin-bottom: 8px;
+}
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+.hero-sub {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+}
+.flight-box {
+  margin-top: 16px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.9;
+}
+.flight-box strong { color: #FFD97A; }
+
+.hotel-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.5;
+}
+.hotel-pill strong { color: #fff; }
+
+/* ════ TABS ════ */
+.tabs-sticky {
+  background: var(--navy);
+  padding: 0 14px 14px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.tabs-row {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.tabs-row::-webkit-scrollbar { display: none; }
+.tab {
+  flex-shrink: 0;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border-radius: 50px;
+  padding: 7px 16px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 12.5px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all .2s;
+}
+.tab.active {
+  background: #B07D2A;
+  border-color: #B07D2A;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ════ ANALYSIS ════ */
+.analysis-wrap { margin: 14px 14px 0; }
+.analysis-header {
+  background: var(--navy-bg);
+  border: 1.5px solid #B8CCE8;
+  border-radius: 12px;
+  padding: 13px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.analysis-header.open { border-radius: 12px 12px 0 0; border-bottom-color: transparent; }
+.ah-left { display: flex; align-items: center; gap: 9px; }
+.ah-text { font-size: 13.5px; color: var(--navy); font-weight: 700; }
+.ah-arrow { font-size: 14px; color: var(--navy-mid); transition: transform .3s; }
+.analysis-header.open .ah-arrow { transform: rotate(180deg); }
+
+.analysis-body {
+  display: none;
+  background: var(--navy-bg);
+  border: 1.5px solid #B8CCE8;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  padding: 4px 16px 14px;
+}
+.analysis-body.open { display: block; }
+.a-row {
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(45,82,130,0.15);
+  font-size: 12.5px;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+.a-row:last-child { border-bottom: none; }
+.a-day { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+
+/* ════ DAY SECTION ════ */
+.day-section { display: none; }
+.day-section.active { display: block; }
+
+.day-head {
+  margin: 18px 14px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.day-n {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--bdr);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.day-meta { padding-top: 6px; }
+.day-label {
+  font-size: 10.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink3);
+  font-weight: 500;
+}
+.day-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-top: 3px;
+}
+.day-theme {
+  font-size: 12px;
+  color: var(--ink3);
+  margin-top: 4px;
+}
+
+.hr { height: 1px; background: var(--bdr); margin: 14px; }
+
+/* ════ TIMELINE ════ */
+.tl { padding: 0 14px; }
+.ti {
+  display: flex;
+  gap: 13px;
+  padding-bottom: 2px;
+  position: relative;
+}
+.ti:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  bottom: 0;
+  width: 1.5px;
+  background: var(--bdr);
+}
+.ti-icon-wrap {
+  flex-shrink: 0;
+  width: 40px;
+  padding-top: 8px;
+}
+.ti-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.ci-t { background: #E0EBFF; }
+.ci-f { background: #FFF0E0; }
+.ci-s { background: #E4F4EB; }
+.ci-v { background: #FFF8E0; }
+.ci-h { background: #F0E8F8; }
+
+.ti-body { flex: 1; padding: 8px 0 20px; }
+.ti-time {
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.3px;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+.ti-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+.ti-desc {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.7;
+}
+.ti-desc strong { color: var(--ink); font-weight: 700; }
+
+/* ════ METRO BADGE ════ */
+.mb {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 3px 10px 3px 8px;
+  border-radius: 50px;
+  margin: 3px 4px 3px 0;
+  vertical-align: middle;
+}
+.mc { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.l1 { background: var(--line1); }
+.l2 { background: var(--line2); }
+.l3 { background: var(--line3); }
+.l4 { background: var(--line4); }
+
+/* ════ MAP BUTTONS ════ */
+.map-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.mbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 13px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity .2s;
+  white-space: nowrap;
+}
+.mbtn:active { opacity: .7; }
+.mg { background: #1967D2; color: #fff; }
+.mn { background: #03C75A; color: #fff; }
+.mh { background: #E05A1E; color: #fff; }
+
+/* ════ CARDS ════ */
+/* Bus card */
+.bus-card {
+  background: var(--surface);
+  border: 1.5px solid var(--bdr);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 10px;
+}
+.bc-t {
+  font-size: 10.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink3);
+  font-weight: 700;
+  margin-bottom: 11px;
+}
+.bc-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.bc-row:last-child { margin-bottom: 0; }
+.bc-num {
+  flex-shrink: 0;
+  background: #C0392B;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-top: 1px;
+  min-width: 48px;
+  text-align: center;
+}
+.bc-info { font-size: 12.5px; color: var(--ink2); line-height: 1.7; }
+.bc-info strong { color: var(--ink); }
+
+/* Hotel card */
+.hotel-card {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-top: 10px;
+  color: rgba(255,255,255,0.9);
+}
+.hc-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.hc-r {
+  display: flex;
+  gap: 8px;
+  font-size: 12.5px;
+  line-height: 1.9;
+  align-items: flex-start;
+}
+.hc-k { color: #FFD97A; font-weight: 700; flex-shrink: 0; width: 48px; }
+.hc-v { color: rgba(255,255,255,0.88); }
+.hc-note {
+  margin-top: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 7px;
+  padding: 8px 11px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+}
+
+/* Tip / Warn / Info */
+.tip {
+  background: var(--gold-bg);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+.tip strong { color: #8A5E10; font-weight: 700; }
+
+.warn {
+  background: var(--red-bg);
+  border-left: 3px solid var(--red);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+.warn strong { color: var(--red); font-weight: 700; }
+
+.info {
+  background: var(--navy-bg);
+  border-left: 3px solid var(--navy-mid);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+.info strong { color: var(--navy); font-weight: 700; }
+
+/* Section label */
+.sl {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink3);
+  font-weight: 700;
+  margin: 10px 0 5px;
+}
+
+/* Spot list */
+ul.sp { list-style: none; }
+ul.sp li {
+  display: flex;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.65;
+  padding: 3px 0;
+}
+ul.sp li::before { content: '▸'; color: var(--gold); flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+ul.sp li strong { color: var(--ink); font-weight: 700; }
+
+/* Spacing helpers */
+.mt8 { margin-top: 8px; }
+.mx { margin: 0 14px; }
+
+/* Footer */
+/* ════ 美食推薦參考 ════ */
+.ref-wrap{margin:12px 14px 0;}
+.ref-toggle{background:#fff;border:1.5px solid var(--bdr);border-radius:10px;padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;}
+.ref-toggle.open{border-radius:10px 10px 0 0;border-bottom-color:transparent;}
+.rt-l{display:flex;align-items:center;gap:8px;}
+.rt-label{font-size:13px;font-weight:700;color:var(--ink2);}
+.rt-arr{font-size:13px;color:var(--ink3);transition:transform .3s;}
+.ref-toggle.open .rt-arr{transform:rotate(180deg);}
+.ref-body{display:none;background:#fff;border:1.5px solid var(--bdr);border-top:none;border-radius:0 0 10px 10px;padding:6px 14px 14px;}
+.ref-body.open{display:block;}
+.ri{padding:9px 0;border-bottom:1px solid var(--bdr);}
+.ri:last-child{border-bottom:none;}
+.ri-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px;}
+.ri-addr{font-size:11px;color:var(--ink3);margin-bottom:4px;line-height:1.5;}
+.ri-note{font-size:12px;color:var(--ink2);line-height:1.65;}
+.ri .map-row{margin-top:5px;}
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 11.5px;
+  color: var(--ink3);
+  border-top: 1px solid var(--bdr);
+  margin-top: 30px;
+  line-height: 1.9;
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-eyebrow">Travel Guide · 2025</div>
+  <h1>首爾<br>五日四夜</h1>
+  <p class="hero-sub">高雄出發 · 4/29–5/3</p>
+  <div class="flight-box">
+    <strong>✈ 去程</strong> KHH 06:55 → ICN 10:45<br>
+    <strong>✈ 回程</strong> ICN 14:15 → MFM 17:05 → KHH 23:00
+  </div>
+  <div class="hotel-pill">
+    🏨 <div><strong>忠武路 G3 飯店</strong><br>忠武路站 6號口 步行 1 分鐘</div>
+  </div>
+</div>
+
+<!-- ══ TABS ══ -->
+<div class="tabs-sticky">
+  <div class="tabs-row">
+    <button class="tab active" onclick="go(0)">DAY 1 · 4/29</button>
+    <button class="tab" onclick="go(1)">DAY 2 · 4/30</button>
+    <button class="tab" onclick="go(2)">DAY 3 · 5/1</button>
+    <button class="tab" onclick="go(3)">DAY 4 · 5/2</button>
+    <button class="tab" onclick="go(4)">DAY 5 · 5/3</button>
+  </div>
+</div>
+
+<!-- ══ ANALYSIS ══ -->
+<div class="analysis-wrap">
+  <div class="analysis-header" id="ah" onclick="ta()">
+    <div class="ah-left"><span style="font-size:18px">🗺️</span><span class="ah-text">行程順路分析 ＋ 注意事項</span></div>
+    <span class="ah-arrow">▾</span>
+  </div>
+  <div class="analysis-body" id="ab">
+    <div class="a-row">
+      <div class="a-day">🏨 飯店選得非常好！</div>
+      忠武路G3飯店位於 3號+4號線交會的忠武路站，6號口步行1分鐘。機場巴士6001/6015停在飯店轉角100公尺（下車站名：PJ/G3酒店）。去明洞只需一站，據點完美。
+    </div>
+    <div class="a-row">
+      <div class="a-day">DAY 1 明洞 ✅ 完美</div>
+      飯店→青瓦城烤肉→明洞商圈→樂天→新世界，全程步行不超過15分鐘，到埠日輕鬆。
+    </div>
+    <div class="a-row">
+      <div class="a-day">DAY 2 北村→三清→仁寺洞 ✅ 完美</div>
+      全在鍾路區，安國站一站搞定。<strong>⚠️ 北村2025年3月新規：平日10:00–17:00才開放。</strong>路線：Cafe Onion早餐→北村八景→Blue Bottle三清→항아리수제비午餐→仁寺洞→安寧仁寺洞。
+    </div>
+    <div class="a-row">
+      <div class="a-day">DAY 3 廣藏→芳山→漢南洞→聖水 ⚠️ 注意節日</div>
+      廣藏→芳山步行12分，芳山→漢南洞（Golden Piece）搭6號線約25分，漢南洞→聖水搭6號線→약수換2號線約20分，全程不走回頭路。<strong>⚠️ 5/1 勞動節部分攤商公休，09:00 開門就去！Golden Piece 12:00 開門，時機完全配合！</strong>
+    </div>
+    <div class="a-row">
+      <div class="a-day">DAY 4 梨大→弘大→延南洞 ✅ 完美</div>
+      全在2號線，步行或1站串聯。梨大商圈疫後倒店多，校園才是重點，購物主力轉弘大。
+    </div>
+    <div class="a-row">
+      <div class="a-day">DAY 5 回程 🛫 最晚 11:30 出飯店</div>
+      ICN 14:15起飛，機場巴士90分鐘。<strong>G3附近是頭幾站，建議11:15就到巴士站排隊，以免客滿！</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ DAY 1 ══════════ -->
+<div class="day-section active" id="d0">
+  <div class="day-head">
+    <div class="day-n">01</div>
+    <div class="day-meta">
+      <div class="day-label">April 29 · Tuesday</div>
+      <div class="day-title">抵達首爾<br>明洞初探</div>
+      <div class="day-theme">🛬 機場 → G3飯店 → 青瓦城烤肉 → 明洞</div>
+    </div>
+  </div>
+  <div class="hr"></div>
+  <div class="tl">
+
+    <!-- 出發 -->
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-t">✈️</div></div>
+      <div class="ti-body">
+        <div class="ti-time">03:30 從住處出發</div>
+        <div class="ti-name">高雄小港國際機場</div>
+        <div class="ti-desc">建議 03:30–03:50 出發，<strong>06:00前抵達</strong>辦Check-in。<br>航班 KHH→ICN，06:55 起飛（約2.5小時）。</div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=Kaohsiung+International+Airport" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/高雄국제공항" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 仁川 -->
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-t">🛬</div></div>
+      <div class="ti-body">
+        <div class="ti-time">10:45 抵達仁川機場 T1</div>
+        <div class="ti-name">仁川國際機場 第1航廈</div>
+        <div class="ti-desc">入境 → 領行李 → 前往 <strong>1樓入境大廳</strong> 搭機場巴士。<br>
+        💡 建議提前在台灣線上申請 <strong>電子入境卡（SeS）</strong>走快速通道。</div>
+        <div class="bus-card">
+          <div class="bc-t">✦ 機場巴士 → 忠武路 G3 飯店</div>
+          <div class="bc-row">
+            <span class="bc-num">6001</span>
+            <div class="bc-info">搭乘：T1 <strong>5B 出口</strong>（1樓入境大廳往右）<br>停靠：明洞・首爾廣場・南山<br>下車：<strong>PJ/G3酒店</strong> or 明洞Tmark酒店<br>費：₩17,000 ｜班距：20–30分 ｜車程：約80分</div>
+          </div>
+          <div class="bc-row">
+            <span class="bc-num">6015</span>
+            <div class="bc-info">搭乘：T1 <strong>6B 出口</strong><br>停靠：明洞・南大門・首爾站<br>下車：<strong>PJ/G3酒店</strong> or 明洞Tmark酒店<br>費：₩17,000 ｜班距：20–30分 ｜車程：約85分<br><strong>✦ 推薦此班，直達飯店附近</strong></div>
+          </div>
+          <div class="tip"><strong>💡 下車後：</strong>飯店就在巴士站轉角100公尺！預計12:15–12:30抵達。T-money搭機場巴士需補差價，建議在售票機購票。</div>
+        </div>
+        <div class="map-row mt8">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=Incheon+International+Airport+Terminal+1" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/인천국제공항+1터미널" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://www.hanchao.com/trans/airport.html" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 飯店 -->
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-h">🏨</div></div>
+      <div class="ti-body">
+        <div class="ti-time">12:30 抵達飯店</div>
+        <div class="ti-name">忠武路 G3 飯店</div>
+        <div class="hotel-card">
+          <div class="hc-name">🏨 G3 Hotel Chungmuro</div>
+          <div class="hc-r"><span class="hc-k">地址</span><span class="hc-v">서울 중구 충무로 7</span></div>
+          <div class="hc-r"><span class="hc-k">地鐵</span><span class="hc-v">忠武路站 <strong style="color:#FFD97A">6號口 步行1分鐘</strong><br>3號線（橙）+ 4號線（藍）交會</span></div>
+          <div class="hc-r"><span class="hc-k">電扶梯</span><span class="hc-v"><strong style="color:#FFD97A">5號口</strong> 有電扶梯，帶大行李走這個</span></div>
+          <div class="hc-r"><span class="hc-k">機場車</span><span class="hc-v">門口右轉100公尺有6001/6015巴士站</span></div>
+          <div class="hc-r"><span class="hc-k">Check-in</span><span class="hc-v">15:00（先寄放行李輕裝出發）</span></div>
+          <div class="hc-r"><span class="hc-k">Check-out</span><span class="hc-v">11:00</span></div>
+          <div class="hc-note">💡 樓下有24hr便利商店、Starbucks，附近有Olive Young，生活機能極佳！</div>
+        </div>
+        <div class="map-row mt8">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=G3+Hotel+Chungmuro+Seoul" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/G3+Hotel+충무로" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://www.hanchao.com/hotel/hotel_map.html?h_id=g3hotel_chungmuro" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 午餐 -->
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">🥩</div></div>
+      <div class="ti-body">
+        <div class="ti-time">13:00 午餐</div>
+        <div class="ti-name">青瓦城 忠武路店（청와성）</div>
+        <div class="ti-desc">首爾知名炭火烤肉，飯店步行即達！<br>
+        <span class="mb"><span class="mc l3"></span>忠武路站</span> 步行3分鐘<br>
+        <strong>必點：</strong>오겹살 五花肉、된장찌개 大醬湯</div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=청와성+충무로+서울" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/청와성+충무로" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=청와성+충무로" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 明洞商圈 -->
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-s">🛍</div></div>
+      <div class="ti-body">
+        <div class="ti-time">14:30 下午</div>
+        <div class="ti-name">明洞商圈（명동）</div>
+        <div class="ti-desc">
+          <span class="mb"><span class="mc l4"></span>明洞站 6號口</span>（或從飯店步行約12分鐘）
+          <div class="sl">必逛</div>
+          <ul class="sp">
+            <li>明洞大街路邊攤：芝士雞串、炸年糕、螃蟹杯</li>
+            <li><strong>Olive Young 明洞旗艦店</strong>（最齊全）</li>
+            <li><strong>3CE旗艦店</strong> — 韓妝＋服飾，有<strong>免費拍貼機</strong>！</li>
+          </ul>
+        </div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=명동+서울" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/명동상권" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=명동" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 樂天 -->
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-s">🏬</div></div>
+      <div class="ti-body">
+        <div class="ti-time">16:00</div>
+        <div class="ti-name">樂天百貨 明洞本館</div>
+        <div class="ti-desc"><span class="mb"><span class="mc l2"></span>乙支路入口站 2號口</span> 直連地下<br>旁邊是 LOTTE Duty Free 免稅店｜B1食品館必逛<br><br>
+        🧀 <strong>Golden Cheese（골든치즈）</strong>就在<strong>樂天百貨明洞本館 B1</strong>！韓國第一個「炙燒焦糖乳酪蛋糕」品牌，點單後現場噴槍炙燒焦糖，眼前產生金黃焦脆糖殼，超療癒！<br>
+        <strong>必點：</strong>原味 Golden Cheesecake、紅豆乳酪蛋糕、艾草紅豆乳酪蛋糕（傳統韓味）<br>
+        <em style="font-size:11.5px;color:#7A6E65">Golden Piece 同集團第二品牌，自用或送禮都超精緻</em></div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=롯데백화점+명동+본관" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/롯데백화점+명동" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=롯데백화점+명동" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 新世界 -->
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-s">🏬</div></div>
+      <div class="ti-body">
+        <div class="ti-time">17:00</div>
+        <div class="ti-name">新世界百貨 本館（신세계백화점）</div>
+        <div class="ti-desc"><span class="mb"><span class="mc l4"></span>會賢站 7號口</span> 直連<br>1930年建成，首爾最古老百貨。<strong>B1食品館：</strong>熟食、傳統糕點、精緻伴手禮最齊全</div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=신세계백화점+본관+서울" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/신세계백화점+본관" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=신세계백화점+본관" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 晚餐 -->
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">🥩</div></div>
+      <div class="ti-body">
+        <div class="ti-time">19:00 晚餐（二選一）</div>
+        <div class="ti-name">🅐 王妃家烤肉（왕비집）／ 🅑 明洞餃子（명동교자）</div>
+        <div class="ti-desc">
+          <div style="background:#FEF6E4;border-left:3px solid #B07D2A;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:10px;font-size:12.5px;line-height:1.7">
+            <strong>🅐 王妃家烤肉（왕비집 명동2호점）</strong> — 2006年開業老店，朝鮮宮廷風裝潢，員工會中文<br>
+            <span class="mb"><span class="mc l2"></span>乙支路入口站 5號口</span> 步行約4分鐘<br>
+            地址：서울 중구 명동9길 13 2층｜每日 11:30–22:00<br>
+            <strong>必點：</strong>왕비갈비（調味排骨）、牛里肌｜有服務員代烤剪肉，小菜無限續添<br>
+            <em style="font-size:11.5px;color:#7A6E65">適合想好好慶祝到埠、吃一頓有質感晚餐</em>
+          </div>
+          <div style="background:#F0F7FF;border-left:3px solid #2D5282;border-radius:0 8px 8px 0;padding:10px 14px;font-size:12.5px;line-height:1.7">
+            <strong>🅑 明洞餃子（명동교자）</strong> — 米其林必比登推薦，首爾刀切麵＋餃子超人氣老店<br>
+            <span class="mb"><span class="mc l4"></span>明洞站 8號口</span> 步行2分鐘<br>
+            <strong>必點：</strong>칼국수（刀切麵）＋만두（餃子）<br>
+            <em style="font-size:11.5px;color:#7A6E65">適合到埠輕鬆吃、不想太油膩、預算控制</em>
+          </div>
+        </div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=왕비집+명동2호점" target="_blank">📍 王妃家 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/왕비집+명동" target="_blank">📍 王妃家 Naver</a>
+          <a class="mbtn mh" href="https://www.hanchao.com/contents/food_detail.html?id=5518" target="_blank">📍 王妃家 韓巢</a>
+        </div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=명동교자+서울" target="_blank">📍 明洞餃子 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/명동교자" target="_blank">📍 明洞餃子 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=명동교자" target="_blank">📍 明洞餃子 韓巢</a>
+        </div>
+        <div class="warn">⚠️ 今日長途飛行，建議<strong>21:00前回G3飯店</strong>休息！<br>回飯店：乙支路入口站搭2號線1站→忠武路站6號口，或步行約10分鐘。</div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- end day1 -->
+
+<!-- ══════════ DAY 2 ══════════ -->
+<div class="day-section" id="d1">
+  <div class="day-head">
+    <div class="day-n">02</div>
+    <div class="day-meta">
+      <div class="day-label">April 30 · Wednesday</div>
+      <div class="day-title">北村韓屋村<br>三清洞 · 仁寺洞</div>
+      <div class="day-theme">🏯 韓屋散策 → 三清咖啡 → 仁寺洞文化街</div>
+    </div>
+  </div>
+  <div class="hr"></div>
+  <div class="warn mx">
+    <strong>⚠️ 北村韓屋村 2025年3月起新規定：</strong>平日僅 <strong>10:00–17:00</strong> 開放入場｜週日五、六景巷弄不開放。入場後請保持安靜，禁止大聲喧嘩。
+  </div>
+  <div class="tl" style="margin-top:16px">
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-t">🚇</div></div>
+      <div class="ti-body">
+        <div class="ti-time">09:15 出發（從G3飯店）</div>
+        <div class="ti-name">搭地鐵至安國站</div>
+        <div class="ti-desc"><span class="mb"><span class="mc l3"></span>忠武路站 6號口</span> 搭3號線往北 → <span class="mb"><span class="mc l3"></span>安國站</span>（2站，約5分鐘）</div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">☕</div></div>
+      <div class="ti-body">
+        <div class="ti-time">09:30 早餐</div>
+        <div class="ti-name">Cafe Onion 安國店（어니언 안국）</div>
+        <div class="ti-desc">北村最知名韓屋咖啡廳！朝鮮時代百年豪宅庭院喝咖啡。<br>
+        <span class="mb"><span class="mc l3"></span>安國站 2號口</span> 步行2分鐘<br>
+        地址：서울 종로구 계동길 5｜平日 07:00–22:00<br>
+        <strong>招牌：</strong>Pandoro 尖塔麵包＋美式咖啡</div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=어니언+안국+서울" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/어니언+안국" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=어니언+안국" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-v">🏘</div></div>
+      <div class="ti-body">
+        <div class="ti-time">10:00 準時入場</div>
+        <div class="ti-name">北村韓屋村（북촌한옥마을）</div>
+        <div class="ti-desc">
+          <span class="mb"><span class="mc l3"></span>安國站 3號口</span> 步行5分鐘 → 北村文化中心（先拿中文導覽地圖！）
+          <div class="sl">推薦散步路線（約2小時）</div>
+          <ul class="sp">
+            <li><strong>北村文化中心</strong> — 起點，拿中文地圖了解八景位置</li>
+            <li><strong>桂洞街</strong> — 公共韓屋、《愛情溫度》韓劇取景地「LUNA TOUCH」</li>
+            <li><strong>首爾中央高中</strong> — 《鬼怪》《冬季戀歌》取景地，哥德式建築超美</li>
+            <li><strong>北村四景</strong>（嘉會洞31號山坡）— 居高俯瞰大片瓦頂，最有韓劇感</li>
+            <li><strong>北村五景・六景</strong>（嘉會洞小巷）— 最多人打卡，穿韓服拍照</li>
+            <li><strong>北村七景→八景</strong>（三清洞石階路）— 沿石階往下走到三清洞</li>
+          </ul>
+          <div class="tip"><strong>💡 韓服體驗：</strong>入口附近多家出租店（₩20,000–30,000/2h），穿韓服入景福宮、昌德宮<strong>免門票</strong>！</div>
+        </div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=북촌한옥마을" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/북촌한옥마을" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=북촌한옥마을" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">☕</div></div>
+      <div class="ti-body">
+        <div class="ti-time">12:00 咖啡中場</div>
+        <div class="ti-name">Blue Bottle Coffee 三清洞店</div>
+        <div class="ti-desc">「咖啡界的Apple」！<strong>2樓座位正面朝北村韓屋群落</strong>，全首爾最特別的視角。<br>
+        <span class="mb"><span class="mc l3"></span>安國站 2號口</span> 步行7分鐘，感古堂石牆路（鬼怪取景地）附近<br>
+        <strong>必點：</strong>冰淇淋拿鐵（招牌拍照款）</div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=블루보틀+삼청동" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/블루보틀+삼청" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=블루보틀+삼청동" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">🍲</div></div>
+      <div class="ti-body">
+        <div class="ti-time">12:45 午餐</div>
+        <div class="ti-name">인사동 항아리 수제비</div>
+        <div class="ti-desc">仁寺洞巷弄名店，曾多次被韓國電視台採訪！湯底鯷魚＋海帶熬6小時。<br>
+        <span class="mb"><span class="mc l3"></span>安國站 6號口</span> 步行3分鐘<br>
+        <strong>必點：</strong>수제비 麵疙瘩（₩9,000）＋파전 蔥煎餅<br>
+        <strong>升級：</strong>+₩5,000 加鮑魚＋扇貝版本</div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=인사동항아리수제비" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/인사동항아리수제비" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=인사동항아리수제비" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-v">🎨</div></div>
+      <div class="ti-body">
+        <div class="ti-time">14:00 仁寺洞散策</div>
+        <div class="ti-name">仁寺洞大街（인사동길）</div>
+        <div class="ti-desc">
+          <span class="mb"><span class="mc l3"></span>安國站 6號口</span> 步行1分鐘即達入口
+          <div class="sl">必逛清單</div>
+          <ul class="sp">
+            <li>📸 <strong>韓文星巴克</strong> — 招牌全用韓文，全首爾少見，必拍！</li>
+            <li>🏮 <strong>쌈지길 森吉街</strong> — 螺旋迴廊50+設計師小店，頂層露台俯瞰仁寺洞</li>
+            <li>🟢 <strong>O'sulloc 雪綠茶</strong> — <strong>必買抹茶醬</strong>（台灣買不到！）</li>
+            <li>🧡 <strong>안녕인사동（安寧仁寺洞）</strong> — LINE Friends PLAY、<strong>YG Place</strong>（BLACKPINK周邊）、Ktown4U</li>
+          </ul>
+        </div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/쌈지길" target="_blank">📍 森吉街</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/오설록+인사동" target="_blank">📍 O'sulloc</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/안녕인사동" target="_blank">📍 安寧仁寺洞</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=인사동" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">🍽</div></div>
+      <div class="ti-body">
+        <div class="ti-time">18:30 晚餐後回飯店</div>
+        <div class="ti-name">853 烤肉 or 鍾路3街布帳馬車</div>
+        <div class="ti-desc"><strong>853烤肉</strong>（인사동12길 16）— 韓屋建築內用餐，五花肉₩18,000/150g<br>
+        或去<strong>鍾路3街4號口</strong>布帳馬車街，串燒＋燒酒在地夜生活！<br>
+        回G3飯店：<span class="mb"><span class="mc l3"></span>安國站</span> → 3號線 → <span class="mb"><span class="mc l3"></span>忠武路站 6號口</span>（5分鐘）</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/853+인사동" target="_blank">📍 853烤肉</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/종로3가+포장마차" target="_blank">📍 布帳馬車</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=853+인사동" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ╔══ 美食推薦參考 DAY 2 ══╗ -->
+  <div class="ref-wrap">
+    <div class="ref-toggle" id="rt2" onclick="rt('rt2','rb2')">
+      <div class="rt-l"><span style="font-size:17px">🍽</span><span class="rt-label">安國・仁寺洞 美食推薦參考（可現場查找）</span></div>
+      <span class="rt-arr">▾</span>
+    </div>
+    <div class="ref-body" id="rb2">
+
+      <div class="ri">
+        <div class="ri-name">🦀 大瓦房醬蟹（큰기와집）— 米其林一星</div>
+        <div class="ri-addr">📍 安國站 1號口步行3分 ｜ 서울 종로구 북촌로 22 1층</div>
+        <div class="ri-note">11:30–15:00 / 17:30–21:00｜300年家傳醬汁醃製生花蟹，蟹膏濃郁，蟹殼拌飯必點！<br>⚠️ 建議<strong>開門前就排隊</strong>，第一批才能穩進，生意超好</div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://maps.app.goo.gl/15kGy9tUsjPTbBmS9" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://naver.me/5X9DDlb4" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🥯 London Bagel Museum（倫敦貝果博物館）安國店</div>
+        <div class="ri-addr">📍 安國站 2號口步行5分 ｜ 서울 종로구 계동 102-1</div>
+        <div class="ri-note">08:00開門，20+種貝果口味＋10+種奶油抹醬，英倫復古裝潢超好拍<br>推薦：馬鈴薯起司貝果、火腿奶油三明治、松露蘑菇濃湯<br>⚠️ <strong>一定要事先下載 CatchTable APP 預約號碼牌</strong>，現場排隊動輒2小時</div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=런던베이글뮤지엄+안국" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/런던베이글뮤지엄+안국" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🥐 Artist Bakery（아티스트베이커리）— 倫敦貝果姐妹店</div>
+        <div class="ri-addr">📍 安國站 2號口步行5分 ｜ 安國店</div>
+        <div class="ri-note">鹽麵包・鹽可頌・法棍，每天開門前大排長龍<br>⚠️ 同樣建議 <strong>CatchTable APP</strong> 遠端取號</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/아티스트베이커리+안국" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">☕ Cafe Layered Bukchon（카페 레이어드 북촌）</div>
+        <div class="ri-addr">📍 安國站 2號口步行3–5分</div>
+        <div class="ri-note">韓屋改建＋英倫鄉村風，招牌各式司康（外酥內軟），08:00開門<br>推薦：原味司康、伯爵茶司康、維多利亞蛋糕</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/카페레이어드+북촌" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🥟 罐頭餃子（깡통만두）— 米其林藍色緞帶12年連續</div>
+        <div class="ri-addr">📍 安國站 2號口步行1分</div>
+        <div class="ri-note">1988年創業，2025年獲2個米其林藍色緞帶！<br>必點：手工餃子湯（손만둣국），牛骨湯底清爽鮮甜</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/깡통만두+안국" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🌿 檐廊家大醬藝術（툇마루집된장예술）— 仁寺洞隱藏名店</div>
+        <div class="ri-addr">📍 서울 종로구 인사동4길 5-26 중원빌딩 2층（仁寺洞巷弄2樓）</div>
+        <div class="ri-note">在地人私藏，大醬拌飯（된장비빔밥）每桌必點，加芝麻油拌勻超香<br>附醬牛肉小菜＋乾明太魚湯</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/툇마루집된장예술" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🍗 無垢屋（무구옥）— 北韓式人蔘雞</div>
+        <div class="ri-addr">📍 서울 종로구 율곡로1길 7（景福宮附近）</div>
+        <div class="ri-note">雞肉與蔘雞湯分開上菜，用大鐵鍋長時間熬煮，平日晚餐時間也需排隊<br>雞肉軟嫩不柴，搭配泡菜畫龍點睛</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/무구옥+서울" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🥣 鄉校羅州牛骨湯（향교나주곰탕）— 仁寺洞人氣湯品</div>
+        <div class="ri-addr">📍 서울 종로구 인사동4길 5-26 1층（和檐廊家同棟1樓）</div>
+        <div class="ri-note">羅州牛骨湯，清爽不油膩，牛胸肉嫩而不柴，附近上班族認可的好味道<br>⚠️ <strong>午餐時間不接受單人用餐</strong>，單人請選晚餐時段</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/향교나주곰탕" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end day2 -->
+
+<!-- ══════════ DAY 3 ══════════ -->
+<div class="day-section" id="d2">
+  <div class="day-head">
+    <div class="day-n">03</div>
+    <div class="day-meta">
+      <div class="day-label">May 1 · Thursday · 勞動節</div>
+      <div class="day-title">廣藏市場 · 芳山<br>漢南洞 · 聖水洞</div>
+      <div class="day-theme">🥚 傳統市場 → 漢南洞藥果伴手禮 → 聖水文青</div>
+    </div>
+  </div>
+  <div class="hr"></div>
+  <div class="warn mx">
+    <strong>⚠️ 5/1 韓國勞動節：</strong>廣藏市場與芳山市場部分攤商可能公休，<strong>09:00一開門就去！</strong>
+  </div>
+  <div class="info mx" style="margin-top:8px">
+    <strong>📍 今日動線（不走回頭路）：</strong>鍾路5街站 → 步行12分 → 乙支路4街站 → <strong>6號線25分 → 漢南洞 Golden Piece</strong> → 6號線→약수換2號線 → 聖水站 → 建大入口
+  </div>
+  <div class="tl" style="margin-top:16px">
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-t">🚇</div></div>
+      <div class="ti-body">
+        <div class="ti-time">08:30 出發（從G3飯店）</div>
+        <div class="ti-name">前往廣藏市場</div>
+        <div class="ti-desc"><span class="mb"><span class="mc l3"></span>忠武路站</span> → 換 <span class="mb"><span class="mc l1"></span>1號線 鍾路5街站 8號口</span>｜步行2分鐘即達廣藏市場正門</div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">🥘</div></div>
+      <div class="ti-body">
+        <div class="ti-time">09:00 早餐＋逛市場</div>
+        <div class="ti-name">廣藏市場（광장시장）</div>
+        <div class="ti-desc">首爾最古老傳統市場（1905年），上過Netflix《世界小吃》！<br>
+        <span class="mb"><span class="mc l1"></span>鍾路5街站 8號口</span> 步行2分鐘
+        <div class="sl">必吃清單</div>
+        <ul class="sp">
+          <li>🥞 <strong>빈대떡 綠豆煎餅</strong> — <strong>순희네（順熙家）</strong>是名店，現磨現煎超香</li>
+          <li>🥗 <strong>육회 生牛肉拌飯</strong> — 新鮮生牛肉＋梨絲＋蛋黃，口感驚豔</li>
+          <li>🌯 <strong>마약김밥 麻藥飯捲</strong> — 超小一口，蘸芥末醬汁上癮，₩1,000超便宜</li>
+          <li>🍢 순대 血腸 ＋ 떡볶이 辣炒年糕</li>
+          <li>🧄 <strong>Garlic Boy 갈릭보이</strong> — 廣藏市場內45號攤位旁，IG/Threads爆紅現烤蒜香麵包！外皮金黃酥脆，爆量奶油起司餡料，甜鹹交織令人上癮。₩4,500–6,800，多種口味，吃完馬上懂為何排隊</li>
+        </ul>
+        <div class="tip"><strong>💡 韓國棉被批發</strong>在廣藏市場也有，性價比遠超台灣，可打包托運！</div></div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=광장시장+서울" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/광장시장" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=광장시장" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-s">🎀</div></div>
+      <div class="ti-body">
+        <div class="ti-time">11:00 步行前往</div>
+        <div class="ti-name">芳山市場（방산시장）</div>
+        <div class="ti-desc">廣藏步行約<strong>12分鐘</strong>，或：<span class="mb"><span class="mc l2"></span>乙支路4街站 4號口</span> 步行5分鐘<br>
+        韓國最大包裝素材＋烘焙器具批發市場！
+        <div class="sl">必買清單</div>
+        <ul class="sp">
+          <li>🧁 烘焙模具、蛋糕紙杯、矽膠模（比台灣便宜2–3倍！）</li>
+          <li>🌶️ 辣炒年糕醬、大醬湯包、韓式烤肉醃料</li>
+          <li>🎁 韓式禮盒包裝紙、緞帶、糖果批發</li>
+          <li>🍴 韓系碗盤餐具（比觀光商店便宜很多）</li>
+        </ul>
+        <div class="tip"><strong>💡 注意：</strong>部分商家有最低購買量，建議多人分購。<strong>以現金交易為主！</strong></div></div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=방산시장+서울" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/방산시장" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=방산시장" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-t">🚇</div></div>
+      <div class="ti-body">
+        <div class="ti-time">13:00 搭地鐵往漢南洞</div>
+        <div class="ti-name">前往 GOLDEN PIECE 漢南洞</div>
+        <div class="ti-desc"><span class="mb"><span class="mc l2"></span>乙支路4街站</span> → 換 <span class="mb" style="background:#996CAC">🟣 6號線</span> 往西 → <span class="mb" style="background:#996CAC">漢江鎮站 3號口</span>（約25–30分）<br>
+        3號口有電梯，步行約400公尺即達</div>
+      </div>
+    </div>
+
+    <!-- GOLDEN PIECE -->
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-s">🏆</div></div>
+      <div class="ti-body">
+        <div class="ti-time">13:30 伴手禮精品採購</div>
+        <div class="ti-name">GOLDEN PIECE 漢南洞（골든피스）</div>
+        <div class="ti-desc">GD（G-Dragon）私藏甜點、BTS RM、Jimin、LE SSERAFIM Kazuha 都造訪過的<strong>頂級韓國藥果</strong>品牌！<br>
+        地址：서울 용산구 한남대로27길 25｜<strong>營業時間：12:00–18:00</strong><br>
+        <span class="mb" style="background:#996CAC">🟣 6號線 漢江鎮站 3號口</span> 步行約400公尺（3號口有電梯）<br><br>
+        <div class="sl">必買清單</div>
+        <ul class="sp">
+          <li>🦌 <strong>鹿型藥果禮盒</strong> — 多種口味：芝麻、黑芝麻、香草、艾草、伯爵茶、咖啡</li>
+          <li>🐰 <strong>兔型藥果禮盒</strong> — 榛子巧克力、綠茶、檸檬優格等現代口味</li>
+          <li>🐍 <strong>2025青蛇藥果禮盒</strong> — 今年限定款，最適合伴手禮</li>
+          <li>🧊 薄荷巧克力・哈密瓜・艾草等創意口味，非傳統藥果的油膩感</li>
+        </ul>
+        <div class="tip"><strong>💡 保存：</strong>常溫3天 / 冷凍2–3週。現場有試吃，喜歡再下手！<br>
+        店內有中英文標示，不用擔心語言問題。<br>
+        <strong>門口對面有「Golden Piece」字樣大鏡子，必拍認證照！</strong></div></div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=골든피스+한남+서울" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/골든피스+한남" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://www.hanchao.com/contents/shop_detail.html?id=32800" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-t">🚇</div></div>
+      <div class="ti-body">
+        <div class="ti-time">14:30 前往聖水洞</div>
+        <div class="ti-name">漢南洞 → 聖水洞</div>
+        <div class="ti-desc"><span class="mb" style="background:#996CAC">🟣 漢江鎮站</span> → 6號線往東 → 약수역 → 換 <span class="mb"><span class="mc l2"></span>2號線</span> → <span class="mb"><span class="mc l2"></span>聖水站 3號口</span>（約20分鐘）<br>
+        或也可搭計程車，約₩8,000–12,000，10–15分鐘</div>
+      </div>
+    </div>
+
+    <!-- 안목 午餐 -->
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">🍲</div></div>
+      <div class="ti-body">
+        <div class="ti-time">15:00 聖水洞午餐</div>
+        <div class="ti-name">안목（安木）— 米其林必比登 豬肉湯飯</div>
+        <div class="ti-desc">
+          釜山發跡、韓國<strong>豬肉湯飯首家米其林必比登（빕구르망）</strong>認證名店！聖水洞分店就在站附近。<br>
+          <span class="mb"><span class="mc l2"></span>聖水站</span> 附近｜建議用 Naver Map 搜尋「<strong>안목 성수</strong>」確認最新位置<br>
+          （首爾另有江南 역삼점：서울 강남구 언주로 520 1층，11:00–24:00）<br><br>
+          <div class="sl">為什麼值得等</div>
+          <ul class="sp">
+            <li>🐷 豬骨湯底清澈不油膩，豬肉毫無腥味，入口即化——韓國人說：「喝完就再也喝不了別家的湯」</li>
+            <li>🧄 獨特吃法：自行研磨新鮮大蒜加入湯中，香氣加倍</li>
+            <li>🍜 <strong>必點：돼지국밥 ₩13,000</strong> / 섞어국밥 什錦湯飯 ₩13,500 / 항정가브리국밥（首爾限定！）₩17,000</li>
+            <li>🥩 맛보기 차가운 수육（涼拌白切肉）₩16,000，搭湯一起吃絕配</li>
+          </ul>
+          <div class="tip"><strong>💡 提前用 CatchTable APP 取號</strong>，到站後直接候位不浪費逛聖水洞的時間！</div>
+        </div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=안목+성수" target="_blank">📍 Google 聖水</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/안목+성수" target="_blank">📍 Naver 聖水</a>
+          <a class="mbtn mn" href="https://naver.me/G5PQfSaJ" target="_blank">📍 Naver 江南店</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-v">☕</div></div>
+      <div class="ti-body">
+        <div class="ti-time">16:00 文青探索</div>
+        <div class="ti-name">聖水洞（성수동）</div>
+        <div class="ti-desc">首爾的「布魯克林」！廢棄工廠改建文青熱點，每條巷弄都有驚喜。<br>
+        <span class="mb"><span class="mc l2"></span>聖水站 3號・4號口</span> 往漢江方向，沿연무장길一帶
+        <div class="sl">必去清單</div>
+        <ul class="sp">
+          <li>🥐 <strong>Nudake</strong> — 抹茶熔岩牛角包，撕開奶油傾瀉而出！牆上全是藝術裝置</li>
+          <li>🏭 <strong>대림창고 大林倉庫</strong> — 聖水地標！米倉改造工業風咖啡廳，平日免費入場</li>
+          <li>🍞 <strong>BETON 聖水</strong> — 「鹽麵包天花板」，每日限量，門口有巨大牛角麵包打卡位</li>
+          <li>🏢 <strong>聖水聯邦</strong> — 書店 ARC.N.BOOK、選物店 Thingool、天上家屋咖啡廳</li>
+          <li>🖤 <strong>LCDC Seoul</strong> — 4層樓最潮複合空間，BLACKPINK Jennie 曾到訪</li>
+          <li>🌿 <strong>首爾林（서울숲）</strong> — 旁邊大型公園，五月鬱金香盛開</li>
+          <li>☕ <strong>newmix coffee 聖水店</strong> — 韓國傳統即溶咖啡（스틱커피）現代升級版！11種創意口味全部可免費試喝，確認喜歡再買。設計感極強的包裝，是近年超爆紅的韓國新伴手禮代表。<br>
+          地址：서울 성동구 연무장3길 3｜<strong>11:00–19:00</strong>｜聖水站4號口步行約5–7分鐘</li>
+        </ul>
+        <div class="tip">
+          <strong>💡 newmix coffee 必買口味：</strong>香蕉牛奶（인기1위！）、炒米（볶은쌀맛，只有韓國才有的味道）、抹茶、烤栗子、牛奶焦糖、薄荷巧克力、伯爵奶茶<br>
+          每盒10入 ₩15,900–17,900，整盒可免費試喝後再決定，店員顏值極高！<br>
+          <strong>💡 IG 搜 #성수팝업</strong> 查看目前品牌快閃，常有贈品！平日人少更好逛。
+        </div></div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/누데이크+성수" target="_blank">📍 Nudake</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/대림창고" target="_blank">📍 大林倉庫</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/뉴믹스커피+성수" target="_blank">📍 newmix coffee</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=성수동+카페" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">🍲</div></div>
+      <div class="ti-body">
+        <div class="ti-time">18:30 晚餐</div>
+        <div class="ti-name">祖傳三代馬鈴薯排骨湯（소문난 성수 감자탕）</div>
+        <div class="ti-desc">
+          聖水洞站4號口步行3–5分鐘，就在咖啡街主要逛街路線上！<strong>24小時全年無休</strong>，吃完繼續逛。<br>
+          <span class="mb"><span class="mc l2"></span>聖水站 4號口</span> 步行約3–5分鐘<br>
+          地址：서울 성동구 연무장길 45（練武場街45號）<br>
+          韓國廚神<strong>白鍾元《三大天王》推薦</strong>，門口幾乎隨時有人排隊，翻桌快，平均等10–15分鐘<br><br>
+          <div class="sl">必吃＋必知</div>
+          <ul class="sp">
+            <li>🦴 豬脊骨排骨湯（감자탕）燉得骨肉輕鬆分離，馬鈴薯鬆軟吸飽湯汁，一大鍋滾燙上桌超壯觀</li>
+            <li>🍚 <strong>炒飯（볶음밥）必加點！</strong>吃完排骨後阿姨幫你把湯汁炒飯，加大把芝麻葉壓飯，鍋巴Q彈，超越排骨本體的存在！</li>
+            <li>🍜 麵疙瘩（수제비）也是熱門追加，清爽收尾</li>
+            <li>👤 有<strong>單人砂鍋版</strong>（감자국식사），一個人來也可以吃！店內有單人隔離座位</li>
+            <li>🗣️ 部分服務員會中文，不用擔心點餐問題！</li>
+          </ul>
+          <div class="tip">
+            <strong>💡 點餐建議：</strong>小鍋（소）約 ₩27,000，2人點一鍋就夠，追加炒飯 ₩3,000。沾醬用特調黃芥末＋洋蔥，解膩又提鮮。<br>
+            <strong>💡 聖水洞附近其他晚餐選擇：</strong><br>
+            🥩 <strong>고공（Gogong）烤肉</strong> — 時尚咖啡廳外觀的烤肉店，主打新鮮現切，服務員全程代烤<br>
+            🐟 <strong>제일곱창 第一烤腸</strong>（往十里站附近）— 烤豬腸名店，濃郁焦香，聖水往建大方向順路
+          </div>
+          回G3飯店：<span class="mb"><span class="mc l2"></span>聖水站</span> → 2號線 → <span class="mb"><span class="mc l2"></span>乙支路入口</span> → 換 <span class="mb"><span class="mc l3"></span>忠武路站 6號口</span>
+        </div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=소문난+성수+감자탕" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/소문난+성수+감자탕" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=소문난+성수+감자탕" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ╔══ 美食推薦參考 DAY 3 ══╗ -->
+  <div class="ref-wrap">
+    <div class="ref-toggle" id="rt3" onclick="rt('rt3','rb3')">
+      <div class="rt-l"><span style="font-size:17px">🍽</span><span class="rt-label">聖水洞・往十里 美食推薦參考（可現場查找）</span></div>
+      <span class="rt-arr">▾</span>
+    </div>
+    <div class="ref-body" id="rb3">
+
+      <div class="ri">
+        <div class="ri-name">🏆 안목（安木）— 米其林必比登 豬肉湯飯（午餐首選）</div>
+        <div class="ri-addr">📍 聖水站 附近｜Naver Map 搜「안목 성수」查最新位置</div>
+        <div class="ri-note">韓國豬肉湯飯首家米其林必比登名店，釜山發跡、已進軍首爾！湯底清澈無腥味，自磨新鮮大蒜加入是招牌吃法<br>必點：돼지국밥 ₩13,000 ｜ 항정가브리국밥（首爾限定）₩17,000<br>⚠️ 建議提前 CatchTable APP 取號候位</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/안목+성수" target="_blank">📍 Naver 聖水</a>
+          <a class="mbtn mn" href="https://naver.me/G5PQfSaJ" target="_blank">📍 Naver 江南店</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">☕ Cafe Onion 聖水店（카페 어니언 성수）</div>
+        <div class="ri-addr">📍 서울 성동구 아차산로9길 8（聖水站 2號口步行5分）</div>
+        <div class="ri-note">廢棄工廠改建，工業風超具特色，天氣好坐戶外座位看聖水洞全景<br>招牌：Pandoro 尖塔麵包 + 美式咖啡，人氣超旺請早點去</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/어니언+성수" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🐻 달임막 Dalimak（達林幕）— 熊熊麵包咖啡廳</div>
+        <div class="ri-addr">📍 서울 성동구 성수이로7길 33（聖水洞）</div>
+        <div class="ri-note">爆紅熊熊造型麵包！可愛到捨不得吃，必點泡澡熊造型麵包<br>早上開門就排隊，晚到就買不到</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/달임막+성수" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🥐 자연도소금빵（天然鹽麵包）聖水店</div>
+        <div class="ri-addr">📍 서울 성동구 연무장길（聖水洞）</div>
+        <div class="ri-note">聖水洞鹽麵包名店，每日現烤，外皮金黃酥脆、裡頭奶油爆量<br>搭配鹽花，甜鹹完美平衡，常常限量賣完</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/자연도소금빵+성수" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">☕ Rain Report Croissant（레인리포트）</div>
+        <div class="ri-addr">📍 서울 성동구 성수동（聖水洞）</div>
+        <div class="ri-note">聖水洞人氣可頌咖啡廳，招牌奶油可頌外脆內軟，咖啡品質也高<br>工業風空間，聖水洞咖啡散策的必訪之一</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/레인리포트+성수" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🥩 고공（高空）烤肉</div>
+        <div class="ri-addr">📍 聖水洞 연무장길 일대</div>
+        <div class="ri-note">時尚咖啡廳外觀的烤肉店，主打新鮮現切豬肉，全程服務員代烤<br>氛圍特別，適合邊逛聖水洞、傍晚轉進去吃晚餐</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/고공+성수" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🐟 제일곱창 第一烤腸（往十里站）</div>
+        <div class="ri-addr">📍 서울 성동구 왕십리로（往十里站 附近）</div>
+        <div class="ri-note">烤豬腸名店，濃郁焦香，小菜豐富<br>從聖水洞搭一站地鐵到 <strong>왕십리（往十里）站</strong>，聖水洞逛完順路</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/제일곱창+왕십리" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🍲 BIGJJUN 부대찌개（部隊鍋）聖水店</div>
+        <div class="ri-addr">📍 서울 성동구 성수이로7가길 5（聖水洞）</div>
+        <div class="ri-note">肉量炸裂的部隊鍋，白飯＋泡麵無限續！韓式熔岩起司部隊鍋滾滾上桌<br>小資族必吃，性價比超高</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/BIGJJUN+성수" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end day3 -->
+
+<!-- ══════════ DAY 4 ══════════ -->
+<div class="day-section" id="d3">
+  <div class="day-head">
+    <div class="day-n">04</div>
+    <div class="day-meta">
+      <div class="day-label">May 2 · Friday</div>
+      <div class="day-title">梨花女大 · 弘大<br>延南洞</div>
+      <div class="day-theme">🌿 大學校園 + 弘大購物 + 延南洞咖啡</div>
+    </div>
+  </div>
+  <div class="hr"></div>
+  <div class="info mx">
+    <strong>📍 今日動線（全程沿2號線）：</strong>梨大站 → 梨花女大 → 梨大商圈 → 步行15分/1站 → 弘大 → 延南洞
+  </div>
+  <div class="tl" style="margin-top:16px">
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-t">🚇</div></div>
+      <div class="ti-body">
+        <div class="ti-time">09:30 出發（從G3飯店）</div>
+        <div class="ti-name">前往梨花女大</div>
+        <div class="ti-desc"><span class="mb"><span class="mc l3"></span>忠武路站</span> → 換 <span class="mb"><span class="mc l2"></span>2號線往西</span> → <span class="mb"><span class="mc l2"></span>이대站 2號口</span>（約7站，15分鐘）｜步行3分鐘達正門</div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-v">🌿</div></div>
+      <div class="ti-body">
+        <div class="ti-time">09:50 校園散策</div>
+        <div class="ti-name">梨花女子大學（이화여자대학교）</div>
+        <div class="ti-desc">世界最大女子大學（1886年建校），校園美得像韓劇場景！<br>接待中心：週一–週六 09:30–17:00
+        <div class="sl">3大必拍景點</div>
+        <ul class="sp">
+          <li>🌸 <strong>梨花牆</strong> — 正門入口代表性白牆，遊客必停打卡</li>
+          <li>🏛 <strong>大講堂</strong> — 哥德式建築，保留教堂十字架，校園最美標誌</li>
+          <li>🏗 <strong>ECC 地下楔形廊道</strong> — 世界最大地下建築！從地面往下切的巨大玻璃楔形，俯拍超震撼</li>
+        </ul>
+        <div class="warn"><strong>⚠️ 近況提醒：</strong>梨大商圈疫後倒店較多，<strong>校園本身</strong>才是重點，購物請轉移到弘大！</div></div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=이화여자대학교" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/이화여자대학교" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=이화여자대학교" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-t">🚇</div></div>
+      <div class="ti-body">
+        <div class="ti-time">11:30 前往弘大</div>
+        <div class="ti-name">梨大 → 弘大（吃午餐！）</div>
+        <div class="ti-desc"><span class="mb"><span class="mc l2"></span>梨大站</span> → <span class="mb"><span class="mc l2"></span>弘大入口站 8號口</span>（1站，3分鐘）→ 出站後直走第一個巷子<strong>右轉</strong>即到</div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">🍜</div></div>
+      <div class="ti-body">
+        <div class="ti-time">12:00 弘大午餐</div>
+        <div class="ti-name">돈수백 豚壽百 弘大直營店</div>
+        <div class="ti-desc">
+          釜山風味豬肉湯飯名店，弘大商圈 <strong>24小時全年無休</strong>！<br>
+          <span class="mb"><span class="mc l2"></span>弘大入口站 8號口</span> 直走遇第一個巷子<strong>右轉步行2分鐘</strong><br>
+          地址：서울 마포구 홍익로6길 56（東橋洞164-24）<br><br>
+          <div class="sl">必知重點</div>
+          <ul class="sp">
+            <li>🍖 <strong>豚壽百家常套餐（돈수백정식）₩13,000</strong> — 豬肉湯飯＋白切肉＋一堆小菜，份量飽足；湯底清淡原味，自行加鹽、蝦醬、韭菜調味</li>
+            <li>👤 單人座位區（獨旅友善！），有 <strong>中文平板點餐</strong>，不用說韓語</li>
+            <li>💡 11:30 後人潮漸多，建議 12:00 前到</li>
+          </ul>
+        </div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=돈수백+홍대직영점" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://naver.me/IItcAG3w" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=돈수백+홍대" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-s">🎵</div></div>
+      <div class="ti-body">
+        <div class="ti-time">14:00 弘大探索</div>
+        <div class="ti-name">弘大商圈（홍대）</div>
+        <div class="ti-desc"><span class="mb"><span class="mc l2"></span>弘大入口站 8・9號口</span>（Red Road 逛街街）
+        <div class="sl">必逛清單</div>
+        <ul class="sp">
+          <li>🐻 <strong>Kakao Friends 旗艦店</strong> — 3層樓 Ryan＆Apeach，3樓主題咖啡廳（8、9號口）</li>
+          <li>💄 <strong>3CE 旗艦店</strong> — 韓妝＋服飾，有免費拍貼機！</li>
+          <li>💊 <strong>Olive Young 弘大</strong> — 超大超齊全，最後掃貨</li>
+          <li>🛍 <strong>AK Plaza 弘大</strong> — MUJI、ARTBOX、SPAO（梨大站4號口）</li>
+          <li>🎨 <strong>弘大壁畫街（畢卡索街）</strong> — 弘益大學學生作品，韓劇取景地</li>
+        </ul></div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/카카오프렌즈+홍대" target="_blank">📍 Kakao Friends</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/올리브영+홍대" target="_blank">📍 Olive Young</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=홍대+상권" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-v">🌳</div></div>
+      <div class="ti-body">
+        <div class="ti-time">16:30 延南洞散策</div>
+        <div class="ti-name">延南洞（연남동）＋京義線書街</div>
+        <div class="ti-desc"><span class="mb"><span class="mc l2"></span>弘大入口站 3號口</span> 往京義線方向步行可達
+        <ul class="sp" style="margin-top:6px">
+          <li>🥐 <strong>Tribe Cafe</strong> — 濟州島舒芙蕾，橘子口味超鬆軟！</li>
+          <li>🌿 <strong>Parole & Langue</strong> — 人氣甜點，粟米批＋栗子批</li>
+          <li>🍃 <strong>MintChoco World</strong> — 全店薄荷巧克力主題</li>
+          <li>📚 <strong>京義線書街</strong> — 廢棄鐵路改建的林蔭書道，兩旁咖啡廳＋選物店</li>
+        </ul></div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/연남동+카페" target="_blank">📍 延南洞咖啡廳</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/경의선숲길" target="_blank">📍 京義線書街</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=연남동" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">🍗</div></div>
+      <div class="ti-body">
+        <div class="ti-time">18:30 最後晚餐！</div>
+        <div class="ti-name">弘大必吃推薦（烤肉 or 鰻魚，任選）</div>
+        <div class="ti-desc">
+          <div class="sl">🥩 烤肉類</div>
+          <ul class="sp">
+            <li>🥩 <strong>일편등심（一片里脊）</strong> — 21天熟成韓牛，入口即化，全程代烤，明星愛店</li>
+            <li>🐷 <strong>돼지저금통（小豬存錢筒）</strong> — 弘大超知名平價排隊烤肉，約台幣400元吃飽</li>
+            <li>🍲 <strong>백년백세삼계탕</strong> — 米其林推薦三年，湯頭鮮甜還附大鮑魚！</li>
+          </ul>
+          <div class="sl">🐟 鰻魚類（弘大延南洞）</div>
+          <ul class="sp">
+            <li>🔥 <strong>풍천장어 연남점（風川鰻魚 延南店）</strong> — 弘大最知名烤鰻魚老店！20年老店現殺現烤，韓式白燒鰻外皮酥脆、肉質Q彈，阿珠媽全程代烤。<br>
+            地址：서울 마포구 동교로27길 39｜弘大入口站2號口步行約400公尺<br>
+            營業：11:30–22:30（午休 15:00–16:30，最後點餐21:30）<br>
+            <strong>基本消費：2條起點（約₩78,000），建議開店即去排隊</strong></li>
+            <li>🐍 <strong>일심장어（一心鰻魚）</strong> — 弘大/新村附近鰻魚推薦店，現殺炭烤，口感同樣出色，適合想嘗鮮韓式鰻魚者</li>
+          </ul>
+          <div class="tip"><strong>💡 韓式烤鰻魚 vs 日式蒲燒：</strong>韓式白燒只抹薄鹽，強調鰻魚本身油脂鮮嫩；配生菜・芝麻葉・泡菜・洋蔥包著吃，層次豐富、不油膩！</div>
+          回G3飯店：<span class="mb"><span class="mc l2"></span>弘大入口站</span> → 2號線 → <span class="mb"><span class="mc l2"></span>乙支路入口</span> → 換 <span class="mb"><span class="mc l3"></span>忠武路站 6號口</span>
+        </div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/일편등심+홍대" target="_blank">📍 一片里脊</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/돼지저금통+홍대" target="_blank">📍 小豬存錢筒</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/풍천장어+연남점" target="_blank">📍 風川鰻魚 延南</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/일심장어+홍대" target="_blank">📍 一心鰻魚</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=풍천장어+연남" target="_blank">📍 韓巢</a>
+        </div>
+        <div class="warn">⚠️ 明天ICN 14:15起飛！<strong>23:00前回G3飯店</strong>，整理行李，戰利品全部塞進箱。Check-out 11:00！</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ╔══ 美食推薦參考 DAY 4 ══╗ -->
+  <div class="ref-wrap">
+    <div class="ref-toggle" id="rt4" onclick="rt('rt4','rb4')">
+      <div class="rt-l"><span style="font-size:17px">🍽</span><span class="rt-label">弘大・延南洞 美食推薦參考（可現場查找）</span></div>
+      <span class="rt-arr">▾</span>
+    </div>
+    <div class="ref-body" id="rb4">
+
+      <div class="ri">
+        <div class="ri-name">🦀 弘益醬蟹（홍익간장게장）— 醬蟹吃到飽</div>
+        <div class="ri-addr">📍 서울 마포구 월드컵북로 59（弘大入口站附近）</div>
+        <div class="ri-note">醬蟹＋辣味蟹＋花蟹湯吃到飽 ₩17,900，有中文服務員<br>蟹膏拌飯是精華，超下飯！高CP值首選</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/홍익간장게장" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🐷 飽肚烤腸（배부른곱창）— 雪花起司烤腸</div>
+        <div class="ri-addr">📍 서울 마포구 양화로18안길 26-6（弘大）</div>
+        <div class="ri-note">招牌「雪花烤腸」：烤腸上鋪滿山形起司粉融化而下，視覺效果驚人<br>附牛血湯，辣度可選</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/배부른곱창+홍대" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🌿 麻浦烤腸城 延南店（마포곱창타운 연남점）</div>
+        <div class="ri-addr">📍 서울 마포구 동교로27길 20（延南洞）</div>
+        <div class="ri-note">每日 12:00–00:40｜附大把韭菜一起烤，隨餐有生牛肚＋牛肝，附牛血湯<br>口味清爽，烤腸初體驗推薦此店</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/마포곱창타운+연남점" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🦵 豬腳小姐（미쓰족발）— 蒜泥豬腳30年老店</div>
+        <div class="ri-addr">📍 弘大入口站 2號口步行2分</div>
+        <div class="ri-note">蒜泥豬腳堆積如山，100%韓國產豬腳每天熬煮，Q彈帶膠質<br>附泡菜鍋，份量十足。連續6年米其林首爾指南推薦！</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/미쓰족발+홍대" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🍗 百年土種蔘雞湯（백년백세삼계탕）— 米其林3年</div>
+        <div class="ri-addr">📍 弘大入口站 步行5分</div>
+        <div class="ri-note">湯頭濃郁不油膩，雞肉軟嫩，附大鮑魚特製版超推<br>補體力必吃，米其林指南連續推薦</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/백년백세삼계탕+홍대" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🥩 일편등심（一片里脊）— 21天熟成韓牛</div>
+        <div class="ri-addr">📍 弘大入口站 附近</div>
+        <div class="ri-note">21天熟成韓牛，入口即化，全程代烤，明星愛店<br>價格較高，適合慶祝或犒賞自己</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/일편등심+홍대" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+      <div class="ri">
+        <div class="ri-name">🐟 풍천장어 延南店（風川鰻魚）— 弘大最知名烤鰻魚</div>
+        <div class="ri-addr">📍 서울 마포구 동교로27길 39（弘大入口站2號口步行400公尺）</div>
+        <div class="ri-note">11:30–22:30（午休15:00–16:30）｜現殺現烤活鰻魚，全程阿珠媽代烤<br>基本消費：2條起點 ₩78,000，⚠️ 建議開店即去</div>
+        <div class="map-row">
+          <a class="mbtn mn" href="https://map.naver.com/p/search/풍천장어+연남점" target="_blank">📍 Naver</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end day4 -->
+
+<!-- ══════════ DAY 5 ══════════ -->
+<div class="day-section" id="d4">
+  <div class="day-head">
+    <div class="day-n">05</div>
+    <div class="day-meta">
+      <div class="day-label">May 3 · Saturday</div>
+      <div class="day-title">回程<br>首爾 → 澳門 → 高雄</div>
+      <div class="day-theme">🛫 ICN 14:15 · 最晚 11:30 離飯店</div>
+    </div>
+  </div>
+  <div class="hr"></div>
+  <div class="warn mx">
+    <strong>⚠️ 關鍵時間：</strong>ICN 14:15起飛 → 13:00到機場辦登機+出境 → 巴士90分鐘 → <strong>最晚11:30從G3飯店出發！</strong><br>
+    <strong>⚠️ 回程注意：</strong>G3附近是頭幾站，建議<strong>11:15就到巴士站排隊</strong>，以免客滿！
+  </div>
+  <div class="tl" style="margin-top:16px">
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-f">🍳</div></div>
+      <div class="ti-body">
+        <div class="ti-time">08:00 早餐</div>
+        <div class="ti-name">G3飯店周邊早餐</div>
+        <div class="ti-desc">飯店樓下24hr便利商店（三角飯糰、熱狗包），或附近 Rewire Coffee / Cashmere Coffee，評價都很高！</div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-h">🧳</div></div>
+      <div class="ti-body">
+        <div class="ti-time">09:00 退房</div>
+        <div class="ti-name">G3飯店 Check-out（11:00前）</div>
+        <div class="ti-desc">整理打包戰利品！<br>
+        ✈ 液體超100ml → 托運｜✈ 刀具剪刀 → 只能托運<br>
+        ✈ T-money → 可在地鐵站退款，或留著下次用</div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-s">💊</div></div>
+      <div class="ti-body">
+        <div class="ti-time">09:30 最後掃貨</div>
+        <div class="ti-name">Olive Young 明洞旗艦店</div>
+        <div class="ti-desc">帶行李箱直衝最後一波！<br>
+        <span class="mb"><span class="mc l4"></span>明洞站 6號口</span> 步行3分鐘（從G3飯店搭地鐵1站）<br>
+        <strong>必補：</strong>Anua 苦蕎水、Numbuzin、Abib、COSRX、VT 老虎面膜</div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=올리브영+명동+메인" target="_blank">📍 Google</a>
+          <a class="mbtn mn" href="https://map.naver.com/p/search/올리브영+명동+메인" target="_blank">📍 Naver</a>
+          <a class="mbtn mh" href="https://map.hanchao.com/?q=올리브영+명동" target="_blank">📍 韓巢</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-t">🚌</div></div>
+      <div class="ti-body">
+        <div class="ti-time">11:15–11:30 ⚠️ 最晚出發</div>
+        <div class="ti-name">機場巴士前往仁川機場 T1</div>
+        <div class="ti-desc">從G3飯店門口右轉約<strong>100公尺</strong>就是機場巴士站！</div>
+        <div class="bus-card">
+          <div class="bc-t">✦ 返程 G3飯店附近 → 仁川 T1</div>
+          <div class="bc-row">
+            <span class="bc-num">6001</span>
+            <div class="bc-info">忠武路・明洞 → 仁川機場 T1<br>₩17,000 ｜約80–90分鐘</div>
+          </div>
+          <div class="bc-row">
+            <span class="bc-num">6015</span>
+            <div class="bc-info">明洞・南大門 → 仁川機場 T1<br>₩17,000 ｜約85分鐘</div>
+          </div>
+          <div class="tip"><strong>預計：</strong>11:15–11:30出發 → 13:00抵達機場，從容辦登機＋出境。<br><strong>⚠️ G3是頭幾站，提早到站排隊以免客滿！</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ti">
+      <div class="ti-icon-wrap"><div class="ti-icon ci-t">✈️</div></div>
+      <div class="ti-body">
+        <div class="ti-time">14:15 首爾起飛</div>
+        <div class="ti-name">ICN → MFM → KHH</div>
+        <div class="ti-desc">ICN 14:15 → MFM 17:05（澳門）<br>
+        轉機等待約<strong>4.5小時</strong>（可逛澳門機場免稅店）<br>
+        MFM 21:35 → KHH 23:00 平安返家 🎉</div>
+        <div class="map-row">
+          <a class="mbtn mg" href="https://www.google.com/maps/search/?api=1&query=Incheon+International+Airport" target="_blank">📍 仁川機場</a>
+          <a class="mbtn mh" href="https://www.hanchao.com/trans/airport.html" target="_blank">📍 韓巢機場交通</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- end day5 -->
+
+<footer>
+  SEOUL · 서울 · 首爾 &nbsp;·&nbsp; APR 29 – MAY 3, 2025<br>
+  🏨 忠武路 G3 飯店（충무로역 6번 출구）<br>
+  📍 Google Maps ｜ 📍 Naver Map ｜ 📍 韓巢地圖<br>
+  建議下載 Naver Map 離線地圖 ｜ 購買 T-money 交通卡 ｜ 購物保留收據可退稅
+</footer>
+
+<script>
+function go(i){
+  document.querySelectorAll('.day-section').forEach((el,j)=>el.classList.toggle('active',j===i));
+  document.querySelectorAll('.tab').forEach((b,j)=>b.classList.toggle('active',j===i));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function ta(){
+  const h=document.getElementById('ah');
+  const b=document.getElementById('ab');
+  h.classList.toggle('open');
+  b.classList.toggle('open');
+}
+function rt(hid,bid){
+  document.getElementById(hid).classList.toggle('open');
+  document.getElementById(bid).classList.toggle('open');
+}
+</script>
+</body>
+</html>
